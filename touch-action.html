@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+
+<h3>touch-action: none</h3>
+<button type="button" id="btn1">Click</button>
+<p>Delay was <span id="span1">...</span> milliseconds.</p>
+
+<h3>touch-action: manipulation</h3>
+<button type="button" id="btn2">Click</button>
+<p>Delay was <span id="span2">...</span> milliseconds.</p>
+
+<style>
+#btn1 { touch-action: none }
+#btn2 { touch-action: manipulation }
+</style>
+
+<script>
+(function () {
+  function log(btn, span) {
+    var btn = document.getElementById(btn)
+    var delay
+
+    btn.addEventListener('touchend', function () {
+      delay = Date.now()
+    })
+    btn.addEventListener('click', function () {
+      document.getElementById(span).textContent = Date.now() - delay
+    })
+  }
+
+  log('btn1', 'span1')
+  log('btn2', 'span2')
+
+})()
+</script>
+
+</body>
+</html>

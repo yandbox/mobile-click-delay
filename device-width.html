@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title></title>
+</head>
+<body>
+
+<button type="button">Click</button>
+<p>Delay was <span>...</span> milliseconds.</p>
+<script>
+(function () {
+  var btn = document.querySelector('button')
+  var delay
+
+  btn.addEventListener('touchend', function () {
+    delay = Date.now()
+  })
+  btn.addEventListener('click', function () {
+    document.querySelector('span').textContent = Date.now() - delay
+  })
+})()
+</script>
+
+</body>
+</html>
